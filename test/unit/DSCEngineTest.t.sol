@@ -25,8 +25,8 @@ contract DSCEngineTest is Test {
     address weth;
 
 
-   //  address public USER =  makeAddr("user");
-    address public USER =  address(1);
+    address public USER =  makeAddr("user");
+   //  address public USER =  address(1);
     uint256 amountToMint = 100 ether;
 
     uint256 public constant AMOUNT_COLLATERAL = 10 ether;
@@ -511,8 +511,9 @@ contract DSCEngineTest is Test {
       uint256 expectedUserCollateralValueInUsd = dsce.getUsdValue(weth,  AMOUNT_COLLATERAL) - (usdAmountLiquidated);
 
       (, uint256 userCollateralValueInUsd) = dsce.getAccountInformation(USER);
+      console.log("UserCollateral: ", userCollateralValueInUsd);
       uint256 hardCodedExpectedValue = 70000000000000000020;
-      assertEq(expectedUserCollateralValueInUsd, expectedUserCollateralValueInUsd);
+      assertEq(expectedUserCollateralValueInUsd, userCollateralValueInUsd);
       assertEq(expectedUserCollateralValueInUsd, hardCodedExpectedValue);
    
    }
